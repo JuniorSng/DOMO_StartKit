@@ -125,14 +125,9 @@ const config = {
     ],
     loaders: [
       {
-        test: /\.js$/,
+        test: /\.(j|t)s$/,
         exclude: /(node_modules|bower_components)/,
-        loader: 'babel',
-        query: {
-          cacheDirectory: true,
-          presets: ['es2015'],
-          plugins: ['transform-runtime', 'add-module-exports']
-        }
+        loader: 'awesome-typescript-loader',
       },
       {
         test: /\.css$/,
@@ -219,7 +214,7 @@ if (!INCLUDE_DESKTOP_VIEW && !INCLUDE_RESPONSIVE_VIEW) {
  * Setup the desktop view if INCLUDE_DESKTOP_VIEW is set to true
  */
 if (INCLUDE_DESKTOP_VIEW) {
-  config.entry.desktop = './desktop/index.js';
+  config.entry.desktop = './desktop/index.ts';
   if (!ON_TEST) {
     config.plugins.push(
       new HtmlWebpackPlugin({
@@ -238,7 +233,7 @@ if (INCLUDE_DESKTOP_VIEW) {
  * Setup the responsive view if INCLUDE_RESPONSIVE_VIEW is set to true
  */
 if (INCLUDE_RESPONSIVE_VIEW) {
-  config.entry.responsive = './responsive/index.js';
+  config.entry.responsive = './responsive/index.ts';
   if (!ON_TEST) {
     config.plugins.push(
       new HtmlWebpackPlugin({
